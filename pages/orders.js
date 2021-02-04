@@ -1,4 +1,4 @@
-export default function IndexPage() {
+export default function OrdersPage() {
   return (
     <div>
       <p>Trying</p>
