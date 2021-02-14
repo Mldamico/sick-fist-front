@@ -45,6 +45,7 @@ export const UpdateProduct = ({ id }) => {
   ] = useMutation(UPDATE_PRODUCT_MUTATION);
 
   const { inputs, handleChange, clearForm, resetForm } = useForm(data?.Product);
+
   if (loading) return <p>Loading...</p>;
   return (
     <Form
@@ -53,13 +54,12 @@ export const UpdateProduct = ({ id }) => {
         const res = await updateProduct({
           variables: {
             id,
-            data: {
-              name: inputs.name,
-              description: inputs.description,
-              price: inputs.price
-            }
+            name: inputs.name,
+            description: inputs.description,
+            price: inputs.price
           }
         });
+        console.log(res);
         // const res = await createProduct();
         // clearForm();
         // Router.push({
