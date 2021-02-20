@@ -35,9 +35,8 @@ export const SignIn = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(data);
-    console.log(data?.authenticateUserWithPassword?.message);
-    await signin();
+    const res = await signin();
+    console.log(res);
     resetForm();
   };
 
@@ -64,7 +63,7 @@ export const SignIn = () => {
           />
         </label>
         <label htmlFor="password">
-          Email
+          Password
           <input
             type="password"
             name="password"
