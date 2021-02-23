@@ -4,6 +4,8 @@ import { useUser } from "./User";
 import styled from "styled-components";
 import formatMoney from "../lib/formatMoney";
 import { calcTotalPrice } from "../lib/calcTotalPrice";
+import { useCart } from "../lib/CartState";
+import CloseButton from "./styles/CloseButton";
 const CartItemStyles = styled.li`
   padding: 1rem 0;
   border-bottom: 1px solid var(--lightGrey);
@@ -20,11 +22,15 @@ const CartItemStyles = styled.li`
 
 export const Cart = () => {
   const me = useUser();
+
   if (!me) return null;
+  const data = useCart();
+  if (!data) return null;
   return (
-    <CartStyles open={true}>
+    <CartStyles open={data.cartOpen}>
       <header>
         <Supreme>{me.name}'s Cart</Supreme>
+        <CloseButton onClick={data.closeCart}>&times;</CloseButton>
       </header>
       <ul>
         {me.cart.map(cartItem => (
