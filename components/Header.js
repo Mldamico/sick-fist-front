@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Nav from "./Nav";
 import styled from "styled-components";
+import { Cart } from "./Cart";
+import { useUser } from "./User";
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -34,6 +36,7 @@ const HeaderStyles = styled.header`
 `;
 
 export default function Header() {
+  const me = useUser();
   return (
     <HeaderStyles>
       <div className="bar">
@@ -43,6 +46,7 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">Search</div>
+      {me && <Cart />}
     </HeaderStyles>
   );
 }
